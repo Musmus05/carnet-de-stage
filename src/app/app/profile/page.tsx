@@ -32,7 +32,7 @@ export default async function ProfilePage() {
           locale={(profile?.locale as "fr" | "en" | null) ?? locale}
         />
         <SecurityForms t={t.profile} email={user.email ?? ""} />
-        <DataSection t={t.profile} userId={user.id} />
+        <DataSection t={t.profile} />
       </div>
     </>
   );

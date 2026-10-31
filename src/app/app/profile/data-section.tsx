@@ -1,14 +1,12 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState, useTransition } from "react";
 import { Download, Trash2 } from "lucide-react";
-import { createClient } from "@/lib/supabase/client";
 import { Button, Field, buttonClass, fieldClass } from "@/components/ui";
 import type { Dictionary } from "@/lib/i18n/dictionaries";
+import { deleteAccount as deleteAccountOnServer } from "./actions";
 
-export function DataSection({ t, userId }: { t: Dictionary["profile"]; userId: string }) {
-  const router = useRouter();
+export function DataSection({ t }: { t: Dictionary["profile"] }) {
   const [confirm, setConfirm] = useState("");
   const [error, setError] = useState(false);
   const [pending, start] = useTransition();
@@ -16,17 +14,9 @@ export function DataSection({ t, userId }: { t: Dictionary["profile"]; userId: s
   function deleteAccount() {
     setError(false);
     start(async () => {
-      const supabase = createClient();
-      // Files first: the database cascade cannot reach Storage objects.
-      for (const bucket of ["cvs", "avatars"]) {
-        const { data } = await supabase.storage.from(bucket).list(userId, { limit: 1000 });
-        if (data?.length) await supabase.storage.from(bucket).remove(data.map((f) => `${userId}/${f.name}`));
-      }
-      const { error: rpcError } = await supabase.rpc("delete_my_account");
-      if (rpcError) return setError(true);
-      await supabase.auth.signOut();
-      router.replace("/");
-      router.refresh();
+      // Files and account are deleted on the server; on success it redirects home.
+      const result = await deleteAccountOnServer(confirm);
+      if (result?.error) setError(true);
     });
   }
 
