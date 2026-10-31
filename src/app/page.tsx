@@ -66,7 +66,7 @@ export default async function Home() {
           <div className="relative border border-rule-strong bg-sheet-raised px-6 pb-6 pt-4 shadow-sheet" style={{ borderRadius: 2 }}>
             <SpecimenPlate seed="landing-plate-pasteur" status="offer" label={t.landing.plateCaption} />
             <SpecimenLabel
-              className="relative -mt-4 border-t-2 border-ink"
+              className="relative mt-3 border-t-2 border-ink"
               heading={t.meta.title}
               number="001"
               title={example.title}

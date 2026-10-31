@@ -20,12 +20,15 @@ export function SpecimenPlate({
   status,
   label,
   className,
+  paper = "#f7f8f2",
   duration = 2000,
 }: {
   seed: string;
   status: Status;
   label: string;
   className?: string;
+  /** Surface the plant sits on; live painting uses it as its ground. */
+  paper?: string;
   duration?: number;
 }) {
   const live = useLivePainting();
@@ -39,6 +42,7 @@ export function SpecimenPlate({
         {live === null ? null : live ? (
           <LivePainting
             seed={`${seed}-${stage}`}
+            paper={paper}
             build={(w, h) => specimenScene(seed, stage, w, h)}
             duration={duration}
             fallback={frames}
