@@ -24,7 +24,7 @@ export default async function LoginPage({ searchParams }: PageProps<"/login">) {
         <div className="absolute inset-x-12 top-10 z-10">
           <BrandMark name={t.meta.title} tone="fern" />
         </div>
-        <Forest seed="login-forest" tone="fern" paper="#1e3a2b" className="absolute inset-x-0 bottom-0 h-[78%]" />
+        <Forest scene="login" className="absolute inset-x-0 bottom-0 h-[78%]" />
       </aside>
 
       <main className="flex flex-col px-4 py-6 sm:px-10">

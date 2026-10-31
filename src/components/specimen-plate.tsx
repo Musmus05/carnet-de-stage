@@ -1,63 +1,43 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useMemo } from "react";
 import type { Status } from "@/lib/domain";
-import { STAGE } from "./brush/botany";
-import { paint } from "./brush/painter";
-import { specimenScene } from "./brush/scenes";
+import { hash, STAGE } from "./brush/botany";
+import { SPECIMEN, SPECIMEN_VARIANTS, specimenSequence } from "./brush/catalog";
+import { FramePlayer } from "./frame-player";
 
 /**
- * A pressed plant painted stroke by stroke with p5.brush. The seed makes
- * every application's plant unique; the status sets its growth stage:
- * bud while waiting, flower at interview, fruit for an offer, wilted for a
- * rejection, faded when nobody answered.
+ * A pressed plant painted with p5.brush, played back stroke by stroke from
+ * recorded frames. The seed picks one of the recorded variants; the status
+ * sets its growth stage: bud while waiting, flower at interview, fruit for an
+ * offer, wilted for a rejection, faded when nobody answered.
  */
 export function SpecimenPlate({
   seed,
   status,
-  width = 280,
-  height = 360,
   label,
   className,
-  paper = "#f7f8f2",
+  onSheet = false,
   duration = 2000,
 }: {
   seed: string;
   status: Status;
-  width?: number;
-  height?: number;
   label: string;
   className?: string;
-  paper?: string;
+  /** Painted straight on the page ground rather than on label paper. */
+  onSheet?: boolean;
   duration?: number;
 }) {
-  const hostRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const host = hostRef.current;
-    if (!host) return;
-    let cancel: (() => void) | undefined;
-    let dead = false;
-    paint({
-      host,
-      width,
-      height,
-      paper,
-      seed,
-      steps: specimenScene(seed, STAGE[status], width, height),
-      duration,
-    })
-      .then((c) => (dead ? c() : (cancel = c)))
-      .catch(() => {});
-    return () => {
-      dead = true;
-      cancel?.();
-    };
-  }, [seed, status, width, height, paper, duration]);
+  const sequence = useMemo(
+    () => specimenSequence(STAGE[status], hash(seed) % SPECIMEN_VARIANTS, onSheet),
+    [seed, status, onSheet],
+  );
 
   return (
-    <figure className={className} role="img" aria-label={label || undefined} aria-hidden={label ? undefined : true}>
-      <div ref={hostRef} className="w-full" style={{ aspectRatio: `${width} / ${height}`, background: paper }} />
+    <figure className={className}>
+      <div className="w-full" style={{ aspectRatio: `${SPECIMEN.width} / ${SPECIMEN.height}` }}>
+        <FramePlayer sequence={sequence} duration={duration} label={label} />
+      </div>
     </figure>
   );
 }

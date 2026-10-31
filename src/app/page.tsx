@@ -23,10 +23,7 @@ export default async function Home() {
     <div className="flex min-h-dvh flex-col">
       <div className="relative isolate flex flex-1 flex-col">
       <Forest
-        seed="landing-forest"
-        tone="sheet"
-        paper="#e9ece2"
-        quiet={{ from: 0, to: 0.52 }}
+        scene="landing"
         className="absolute inset-x-0 bottom-0 -z-10 h-[min(82vh,760px)]"
       />
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-8">
@@ -67,7 +64,7 @@ export default async function Home() {
 
         <section aria-label={t.landing.plateCaption} className="relative mx-auto w-full max-w-md">
           <div className="relative border border-rule-strong bg-sheet-raised px-6 pb-6 pt-4 shadow-sheet" style={{ borderRadius: 2 }}>
-            <SpecimenPlate seed="landing-plate-pasteur" status="offer" width={360} height={380} label={t.landing.plateCaption} />
+            <SpecimenPlate seed="landing-plate-pasteur" status="offer" label={t.landing.plateCaption} />
             <SpecimenLabel
               className="relative -mt-4 border-t-2 border-ink"
               heading={t.meta.title}
