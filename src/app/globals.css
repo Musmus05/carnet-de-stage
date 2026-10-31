@@ -1,0 +1,139 @@
+@import "tailwindcss";
+
+/*
+ * Carnet de stage: "Herbier de terrain".
+ * A herbarium sheet (mounting board, pressed-fern binding, iron-gall ink).
+ * Light only: used at a desk or in a library, in daylight. See DESIGN.md.
+ */
+:root {
+  color-scheme: light;
+
+  /* Grounds */
+  --sheet: #e9ece2;          /* mounting board, grey-green */
+  --sheet-raised: #f7f8f2;   /* label paper */
+  --folder: #dce1d2;         /* species folder, second neutral layer */
+  --rule: #cfd4c4;
+  --rule-strong: #aeb4a1;
+
+  /* Binding: the shell rail */
+  --fern: #1e3a2b;
+  --fern-hover: #284a37;
+  --fern-ink: #eef2e7;
+  --fern-muted: #b2c2ad;
+
+  /* Ink */
+  --ink: #221f19;
+  --ink-2: #514b41;
+  --ink-3: #6a6457;
+
+  /* Actions and focus */
+  --action: #24503a;
+  --action-hover: #1b3f2d;
+  --tape: #9a6a14;           /* label tape: focus and selection */
+
+  /* Status, as the stages of a specimen */
+  --st-to_apply: #77775a;
+  --st-applied: #36597f;
+  --st-followed_up: #94650f;
+  --st-interview: #6a4d8c;
+  --st-offer: #2b7243;
+  --st-rejected: #9c3f33;
+  --st-no_answer: #7d7466;
+  --st-withdrawn: #8f877a;
+
+  --danger: #9c3f33;
+
+  --radius: 6px;
+  --shadow-sheet: 0 1px 2px rgb(34 31 25 / 0.06), 0 6px 18px -8px rgb(34 31 25 / 0.18);
+}
+
+@theme inline {
+  --color-sheet: var(--sheet);
+  --color-sheet-raised: var(--sheet-raised);
+  --color-folder: var(--folder);
+  --color-rule: var(--rule);
+  --color-rule-strong: var(--rule-strong);
+  --color-fern: var(--fern);
+  --color-fern-hover: var(--fern-hover);
+  --color-fern-ink: var(--fern-ink);
+  --color-fern-muted: var(--fern-muted);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-action: var(--action);
+  --color-action-hover: var(--action-hover);
+  --color-tape: var(--tape);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-ui), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-label), ui-serif, Georgia, serif;
+
+  --radius-sm: 4px;
+  --radius-md: var(--radius);
+  --shadow-sheet: var(--shadow-sheet);
+}
+
+html {
+  background: var(--sheet);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--sheet);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-feature-settings: "ss01";
+}
+
+h1,
+h2,
+h3 {
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+::selection {
+  background: color-mix(in oklab, var(--tape) 28%, transparent);
+  color: var(--ink);
+}
+
+:focus-visible {
+  outline: 2px solid var(--tape);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+
+a {
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+}
+
+input,
+select,
+textarea {
+  caret-color: var(--action);
+  accent-color: var(--action);
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums lining-nums;
+}
+
+* {
+  scrollbar-color: var(--rule-strong) transparent;
+  scrollbar-width: thin;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
