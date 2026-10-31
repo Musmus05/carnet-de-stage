@@ -39,7 +39,7 @@ export function Recorder() {
     setBusy(true);
     const all = jobs().filter((j) => j.seq.name.includes(filter));
     for (const job of all) {
-      const blobs = await recordFrames(job.steps, { ...job.seq, seed: job.seed, density: job.density, quality: 0.78 });
+      const blobs = await recordFrames(job.steps, { ...job.seq, seed: job.seed, density: job.density, quality: 0.72 });
       let bytes = 0;
       for (let i = 0; i < blobs.length; i++) {
         bytes += blobs[i].size;
