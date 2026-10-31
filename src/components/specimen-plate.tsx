@@ -17,20 +17,17 @@ export function SpecimenPlate({
   status,
   label,
   className,
-  onSheet = false,
   duration = 2000,
 }: {
   seed: string;
   status: Status;
   label: string;
   className?: string;
-  /** Painted straight on the page ground rather than on label paper. */
-  onSheet?: boolean;
   duration?: number;
 }) {
   const sequence = useMemo(
-    () => specimenSequence(STAGE[status], hash(seed) % SPECIMEN_VARIANTS, onSheet),
-    [seed, status, onSheet],
+    () => specimenSequence(STAGE[status], hash(seed) % SPECIMEN_VARIANTS),
+    [seed, status],
   );
 
   return (

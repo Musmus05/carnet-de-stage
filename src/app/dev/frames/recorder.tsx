@@ -17,14 +17,11 @@ type Job = { seq: Sequence; seed: string; steps: Step[]; density: number };
 
 function jobs(): Job[] {
   const list: Job[] = [];
-  for (const onSheet of [false, true]) {
-    // Empty states only ever show a seed on the page ground.
-    for (const stage of onSheet ? (["seed"] as const) : SPECIMEN_STAGES) {
-      for (let v = 0; v < SPECIMEN_VARIANTS; v++) {
-        const seq = specimenSequence(stage, v, onSheet);
-        const seed = `specimen-${v}`;
-        list.push({ seq, seed, steps: specimenScene(seed, stage, seq.width, seq.height), density: 1.5 });
-      }
+  for (const stage of SPECIMEN_STAGES) {
+    for (let v = 0; v < SPECIMEN_VARIANTS; v++) {
+      const seq = specimenSequence(stage, v);
+      const seed = `specimen-${v}`;
+      list.push({ seq, seed, steps: specimenScene(seed, stage, seq.width, seq.height), density: 1.5 });
     }
   }
   const landing = LANDING_FOREST;

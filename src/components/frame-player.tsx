@@ -115,7 +115,6 @@ export function FramePlayer({
       aria-label={label || undefined}
       aria-hidden={label ? undefined : true}
       className={`block h-full w-full ${className}`}
-      style={{ background: sequence.paper }}
     />
   );
 }

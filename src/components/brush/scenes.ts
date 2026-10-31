@@ -42,7 +42,7 @@ export function forestScene(
   const trees = Math.max(3, Math.round(width / 170));
   for (let i = 0; i < trees; i++) {
     const x = spread(trees, i);
-    const h = height * (isQuiet(x) ? rand.range(0.14, 0.2) : rand.range(0.55, 0.85));
+    const h = height * (isQuiet(x) ? rand.range(0.14, 0.2) : rand.range(0.45, 0.68));
     steps.push(...within(tree({ seed: `${seed}-t${i}`, base: [x, ground + 4], height: h, ink: { leaf: c.tree, stem: c.trunk }, fade: 0.75 * c.fade }), rand.range(0, 0.25), 0.55));
   }
 

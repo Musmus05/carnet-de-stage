@@ -7,7 +7,7 @@ import type { Origin, Pt, Step } from "./botany";
  */
 export async function recordFrames(
   steps: Step[],
-  opts: { width: number; height: number; paper: string; seed: string; density: number; frames: number; quality: number },
+  opts: { width: number; height: number; paper?: string; seed: string; density: number; frames: number; quality: number },
 ): Promise<Blob[]> {
   const brush = await import("p5.brush/standalone");
   const host = document.createElement("div");
@@ -17,7 +17,10 @@ export async function recordFrames(
   const canvas = brush.createCanvas(opts.width, opts.height, { parent: host, pixelDensity: opts.density });
   brush.seed(opts.seed);
   brush.noiseSeed(opts.seed);
-  brush.clear(opts.paper);
+  // Transparent ground: the page shows through, so no colour seam appears
+  // in browsers that colour-manage images but not CSS (Firefox).
+  if (opts.paper) brush.clear(opts.paper);
+  else brush.clear();
   // Brush sizes are relative to the scene; scale once from the default of 1.
   brush.scaleBrushes(Math.max(0.8, Math.min(opts.width, opts.height) / 400));
   const origin: Origin = ([x, y]: Pt) => [x - opts.width / 2, y - opts.height / 2];
