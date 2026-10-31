@@ -4,6 +4,23 @@ import { NextResponse, type NextRequest } from "next/server";
 // Refreshes the Supabase session cookie on every request and keeps
 // signed-out visitors out of /app. Authorization itself is enforced by RLS.
 export async function proxy(request: NextRequest) {
+  // Canonicalise percent-encoded paths first (/%61pp is /app): the platform
+  // may decode them for routing, so the checks below must see the same path.
+  const raw = request.nextUrl.pathname;
+  if (raw.includes("%")) {
+    let decoded: string;
+    try {
+      decoded = decodeURIComponent(raw);
+    } catch {
+      return new NextResponse(null, { status: 400 });
+    }
+    if (decoded !== raw && !/[%\s?#\\]/.test(decoded)) {
+      const url = request.nextUrl.clone();
+      url.pathname = decoded;
+      return NextResponse.redirect(url, 308);
+    }
+  }
+
   let response = NextResponse.next({ request });
 
   const supabase = createServerClient(
