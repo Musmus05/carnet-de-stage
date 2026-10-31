@@ -14,11 +14,11 @@ export type Sequence = {
   paper?: string;
 };
 
-export const SPECIMEN_VARIANTS = 4;
+export const SPECIMEN_VARIANTS = 24;
 export const SPECIMEN_STAGES: Stage[] = ["seed", "bud", "flower", "fruit", "wilted", "faded"];
 
 /** Frames are painted on a transparent ground, so they sit on any surface. */
-export const SPECIMEN = { width: 360, height: 400, frames: 12 } as const;
+export const SPECIMEN = { width: 360, height: 400, frames: 10 } as const;
 
 export function specimenSequence(stage: Stage, variant: number): Sequence {
   return { name: `specimen-${stage}-${variant}`, ...SPECIMEN };

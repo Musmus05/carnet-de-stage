@@ -1,4 +1,5 @@
 import { fern, flower, grass, hash, prng, tree, umbel, type Stage, type Step } from "./botany";
+import { specimen } from "./specimen";
 
 /** Shifts a plant's own 0..1 timeline into a window of the scene's timeline. */
 function within(steps: Step[], start: number, span: number): Step[] {
@@ -8,7 +9,7 @@ function within(steps: Step[], start: number, span: number): Step[] {
 /** One pressed plant on its sheet, centred, with mounting tape. */
 export function specimenScene(seed: string, stage: Stage, width: number, height: number): Step[] {
   const h = Math.min(height * 0.88, width * 1.25);
-  return flower({ seed, stage, base: [width * 0.5, height * 0.92], height: h, tape: true });
+  return specimen({ seed, stage, base: [width * 0.5, height * 0.92], height: h, tape: true });
 }
 
 export type ForestTone = "sheet" | "fern";

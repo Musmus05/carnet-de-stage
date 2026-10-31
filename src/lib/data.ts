@@ -35,3 +35,16 @@ export async function getApplication(id: string) {
   if (!app.data) notFound();
   return { application: app.data, events: events.data ?? [] };
 }
+
+export async function getProfile() {
+  const supabase = await createClient();
+  const { data: auth } = await supabase.auth.getUser();
+  if (!auth.user) return null;
+  const { data } = await supabase.from("profiles").select("*").eq("id", auth.user.id).maybeSingle();
+  let avatarUrl: string | null = null;
+  if (data?.avatar_path) {
+    const signed = await supabase.storage.from("avatars").createSignedUrl(data.avatar_path, 60 * 60);
+    avatarUrl = signed.data?.signedUrl ?? null;
+  }
+  return { user: auth.user, profile: data, avatarUrl };
+}

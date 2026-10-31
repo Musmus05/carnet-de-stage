@@ -108,7 +108,7 @@ export default async function ApplicationPage({ params }: PageProps<"/app/applic
           <div className="border border-rule-strong bg-sheet-raised p-4 shadow-sheet" style={{ borderRadius: 2 }}>
             <SpecimenPlate seed={a.id} status={a.status} label={t.status[a.status]} />
             <SpecimenLabel
-              className="-mt-6 border-t-2 border-ink"
+              className="mt-3 border-t-2 border-ink"
               heading={t.meta.title}
               number={accession(a.number)}
               title={a.company}

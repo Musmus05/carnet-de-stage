@@ -57,6 +57,20 @@ isOneToOne: false
                   Relationships: [
                     
                   ]
+                },"profiles": {
+                  Row: {
+                    "avatar_path": string | null,"display_name": string | null,"id": string,"locale": string | null,"programme": string | null,"updated_at": string
+                  }
+                  ComputedFields: never
+                  Insert: {
+                    "avatar_path"?: string | null,"display_name"?: string | null,"id"?: string,"locale"?: string | null,"programme"?: string | null,"updated_at"?: string
+                  }
+                  Update: {
+                    "avatar_path"?: string | null,"display_name"?: string | null,"id"?: string,"locale"?: string | null,"programme"?: string | null,"updated_at"?: string
+                  }
+                  Relationships: [
+                    
+                  ]
                 },"status_events": {
                   Row: {
                     "application_id": string,"at": string,"id": number,"status": Database["public"]['Enums']["application_status"],"user_id": string
@@ -83,7 +97,9 @@ isOneToOne: false
             [_ in never]: never
           }
           Functions: {
-            [_ in never]: never
+            "delete_my_account":
+{ Args: Record<PropertyKey, never>; Returns: undefined
+                           }
           }
           Enums: {
             "application_channel": "job_board"|"linkedin"|"company_site"|"school"|"referral"|"cold_email"|"lab_site"|"other","application_status": "to_apply"|"applied"|"followed_up"|"interview"|"offer"|"rejected"|"no_answer"|"withdrawn","internship_type": "abroad"|"research"|"startup"|"large_company"|"public_sector"|"nonprofit"|"other"

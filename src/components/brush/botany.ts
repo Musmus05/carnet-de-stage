@@ -60,9 +60,9 @@ export function prng(seed: number) {
   return { next, range: (lo: number, hi: number) => lo + next() * (hi - lo) };
 }
 
-type Rand = ReturnType<typeof prng>;
+export type Rand = ReturnType<typeof prng>;
 
-function leaf(base: Pt, angle: number, len: number, width: number): Pt[] {
+export function leaf(base: Pt, angle: number, len: number, width: number): Pt[] {
   const pts: Pt[] = [];
   const steps = 9;
   const cos = Math.cos(angle);
@@ -73,7 +73,7 @@ function leaf(base: Pt, angle: number, len: number, width: number): Pt[] {
   return pts;
 }
 
-function disc(c: Pt, r: number, wobble = 0, rand?: Rand): Pt[] {
+export function disc(c: Pt, r: number, wobble = 0, rand?: Rand): Pt[] {
   return Array.from({ length: 18 }, (_, i) => {
     const a = (i / 18) * Math.PI * 2;
     const k = 1 + (rand ? rand.range(-wobble, wobble) : 0);
@@ -82,7 +82,7 @@ function disc(c: Pt, r: number, wobble = 0, rand?: Rand): Pt[] {
 }
 
 /** A wandering stem from `base` rising `height`, as a list of points. */
-function stemPath(rand: Rand, base: Pt, height: number, sway: number, segments = 5): Pt[] {
+export function stemPath(rand: Rand, base: Pt, height: number, sway: number, segments = 5): Pt[] {
   const pts: Pt[] = [base];
   let x = base[0];
   for (let i = 1; i <= segments; i++) {
@@ -93,7 +93,7 @@ function stemPath(rand: Rand, base: Pt, height: number, sway: number, segments =
 }
 
 /** Paints a path segment by segment between t0 and t1. */
-function strokeSteps(path: Pt[], brushName: string, color: string, weight: number, t0: number, t1: number): Step[] {
+export function strokeSteps(path: Pt[], brushName: string, color: string, weight: number, t0: number, t1: number): Step[] {
   return path.slice(1).map((p, i) => ({
     t: t0 + ((i + 1) / (path.length - 1)) * (t1 - t0),
     draw: (b, o) => {
@@ -106,7 +106,7 @@ function strokeSteps(path: Pt[], brushName: string, color: string, weight: numbe
   }));
 }
 
-function wash(shape: Pt[], color: string, opacity: number, t: number, bleed = 0.12, texture = 0.55): Step {
+export function wash(shape: Pt[], color: string, opacity: number, t: number, bleed = 0.12, texture = 0.55): Step {
   return {
     t,
     draw: (b, o) => {
