@@ -10,7 +10,10 @@ Light only, chosen from the use scene: a student at a laptop, in a library or at
 
 ## Signature move
 
-**The plant grows with the application.** Plants and forests are painted with [p5.brush](https://github.com/acamposuribe/p5.brush) once, in development, and recorded frame by frame as WebP (`/dev/frames`, written to `public/frames`). The site plays them back with cross-fades (`frame-player.tsx`), so visitors see real p5.brush painting in every browser without WebGL or shader compilation (Firefox compiles p5.brush's shaders on each load, which took about 20 s). Frames are painted on a transparent ground so they sit on any surface without a colour seam (Firefox colour-manages images but not CSS colours); only the sign-in forest is painted on the rail green, because watercolour turns pale on a transparent ground, and its top edge is faded out. The application id picks one of four recorded variants; the status sets its stage. After changing `src/components/brush/botany.ts` or `scenes.ts`, open `/dev/frames` and record again.
+**The plant grows with the application.** Plants and forests are painted with [p5.brush](https://github.com/acamposuribe/p5.brush) in one of two ways, chosen per browser (`canPaintLive` in `brush/painter.ts`):
+
+- **Live** (Chrome, Edge, Safari): p5.brush paints stroke by stroke in the visitor's browser, and each application id seeds its own unique plant.
+- **Recorded** (Firefox, or any browser whose brush once took over 1.5 s to start): Firefox recompiles p5.brush's shaders on every load, about 20 s on Windows, so it plays WebP frames recorded in development (`/dev/frames`, written to `public/frames`) with cross-fades (`frame-player.tsx`). Frames are painted on a transparent ground so they sit on any surface without a colour seam (Firefox colour-manages images but not CSS colours); only the sign-in forest is painted on the rail green, because watercolour turns pale on a transparent ground, and its top edge is faded out. The application id picks one of four recorded variants; the status sets its stage. After changing `src/components/brush/botany.ts` or `scenes.ts`, open `/dev/frames` and record again.
 
 | Status | Stage |
 |---|---|
