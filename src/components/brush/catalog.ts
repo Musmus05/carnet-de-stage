@@ -24,7 +24,9 @@ export function specimenSequence(stage: Stage, variant: number): Sequence {
   return { name: `specimen-${stage}-${variant}`, ...SPECIMEN };
 }
 
-export const LANDING_FOREST: Sequence = { name: "forest-landing", width: 1600, height: 760, frames: 16 };
+// Painted on the page ground: on a transparent ground the watercolour edges
+// leave pale halos. The faded top edge hides any colour seam.
+export const LANDING_FOREST: Sequence = { name: "forest-landing", width: 1600, height: 760, frames: 16, paper: "#e9ece2" };
 // Watercolour on a transparent ground turns pale over dark green, so the
 // login forest is painted on the rail colour; its top edge is faded out.
 export const LOGIN_FOREST: Sequence = { name: "forest-login", width: 900, height: 820, frames: 16, paper: "#1e3a2b" };

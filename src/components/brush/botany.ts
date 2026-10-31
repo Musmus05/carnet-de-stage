@@ -111,7 +111,7 @@ function wash(shape: Pt[], color: string, opacity: number, t: number, bleed = 0.
     t,
     draw: (b, o) => {
       b.noStroke();
-      b.fill(color, opacity);
+      b.fill(color, Math.min(255, opacity));
       b.fillBleed(bleed, "out");
       b.fillTexture(texture, 0.45);
       b.polygon(shape.map(o));
@@ -134,7 +134,7 @@ export type PlantOptions = {
 };
 
 /** The specimen flower whose growth stage follows an application status. */
-export function flower(opts: PlantOptions & { stage: Stage; tape?: boolean }): Step[] {
+export function flower(opts: PlantOptions & { stage: Stage; tape?: boolean; /** Light gouache under the petals, for dark grounds. */ underpaint?: string }): Step[] {
   const rand = prng(hash(opts.seed));
   const ink = { ...INK[opts.stage], ...opts.ink };
   const fade = opts.fade ?? 1;
@@ -200,7 +200,10 @@ export function flower(opts: PlantOptions & { stage: Stage; tape?: boolean }): S
     const a = turn + (i / petals) * Math.PI * 2;
     const len = r * (stage === "wilted" ? rand.range(1, 1.5) : rand.range(1.7, 2.1));
     const dir = stage === "wilted" ? a * 0.4 + Math.PI * 0.35 : a;
-    steps.push(wash(leaf(head, dir, len, len * 0.36), ink.head, (stage === "fruit" ? 70 : 95) * fade, 0.68 + (i / petals) * 0.18, 0.12, 0.6));
+    const shape = leaf(head, dir, len, len * 0.36);
+    const t = 0.68 + (i / petals) * 0.18;
+    if (opts.underpaint) steps.push(wash(shape, opts.underpaint, 200, t - 0.005, 0.04, 0.3));
+    steps.push(wash(shape, ink.head, Math.min(255, (stage === "fruit" ? 70 : 95) * fade), t, 0.12, 0.6));
   }
 
   if (stage === "fruit") {
