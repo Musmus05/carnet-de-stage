@@ -7,6 +7,7 @@ import { SpecimenPlate } from "@/components/specimen-plate";
 import { SpecimenLabel } from "@/components/specimen-label";
 import { ButtonLink } from "@/components/ui";
 import { BrandMark } from "@/components/brand";
+import { Forest } from "@/components/forest";
 
 const REPO_URL = "https://github.com/Musmus05/herbarium";
 
@@ -20,6 +21,11 @@ export default async function Home() {
 
   return (
     <div className="flex min-h-dvh flex-col">
+      <div className="relative isolate flex flex-1 flex-col">
+      <Forest
+        scene="landing"
+        className="absolute inset-x-0 bottom-0 -z-10 h-[min(82vh,760px)]"
+      />
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between gap-4 px-4 py-5 sm:px-8">
         <BrandMark name={t.meta.title} />
         <nav className="flex items-center gap-5">
@@ -58,9 +64,9 @@ export default async function Home() {
 
         <section aria-label={t.landing.plateCaption} className="relative mx-auto w-full max-w-md">
           <div className="relative border border-rule-strong bg-sheet-raised px-6 pb-6 pt-4 shadow-sheet" style={{ borderRadius: 2 }}>
-            <SpecimenPlate seed="landing-plate-pasteur" status="offer" width={360} height={430} label={t.landing.plateCaption} />
+            <SpecimenPlate seed="landing-plate-pasteur" status="offer" label={t.landing.plateCaption} />
             <SpecimenLabel
-              className="relative -mt-10 ml-auto w-[min(100%,17rem)] border-t-2 border-ink pl-1"
+              className="relative mt-3 border-t-2 border-ink"
               heading={t.meta.title}
               number="001"
               title={example.title}
@@ -76,8 +82,9 @@ export default async function Home() {
           <p className="mt-3 text-center font-serif text-sm italic text-ink-3">{t.landing.plateCaption}</p>
         </section>
       </main>
+      </div>
 
-      <footer className="border-t border-rule">
+      <footer className="border-t border-rule bg-sheet">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-2 px-4 py-5 text-sm text-ink-3 sm:px-8">
           <span>{t.meta.title}</span>
           <a href={REPO_URL} className="hover:text-ink hover:underline">

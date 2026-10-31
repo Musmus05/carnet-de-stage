@@ -30,7 +30,7 @@ export default async function CvsPage() {
           </h2>
           {cvs.length === 0 ? (
             <div className="grid items-center gap-6 border border-dashed border-rule-strong p-6 sm:grid-cols-[9rem_1fr]">
-              <SpecimenPlate seed="empty-cvs" status="to_apply" width={180} height={220} paper="#e9ece2" label="" className="mx-auto w-36" />
+              <SpecimenPlate seed="empty-cvs" status="to_apply" paper="#e9ece2" label="" className="mx-auto w-36" />
               <div>
                 <p className="font-serif text-xl font-semibold">{t.cvs.empty.title}</p>
                 <p className="mt-2 max-w-[48ch] text-ink-2">{t.cvs.empty.body}</p>
