@@ -1,4 +1,4 @@
-# Carnet de stage
+# Herbarium
 
 Suivez vos candidatures de stage, le CV envoyé à chacune, et apprenez de chaque réponse.
 *Track your internship applications, the CV you sent to each, and learn from every answer.*
@@ -26,7 +26,7 @@ npm run dev
 ```
 
 Ouvrez http://localhost:3000. La base locale est remplie avec un compte de démonstration fictif :
-`demo@carnet.test` / `demo-carnet-2026` (local uniquement, voir `supabase/seed.sql`).
+`demo@herbarium.test` / `demo-herbarium-2026` (local uniquement, voir `supabase/seed.sql`).
 
 Les e-mails locaux (liens magiques) arrivent dans Mailpit : http://127.0.0.1:54324.
 

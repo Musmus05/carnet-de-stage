@@ -40,7 +40,7 @@ Not a generic job board or kanban: the product links each application to the exa
 
 ## Brand Commitments
 
-- Name: Carnet de stage (EN: Internship Logbook). Voice: direct, encouraging without hype, speaks to a student as a peer.
+- Name: Herbarium (same in every language; Latin word understood in French, English, Spanish, Italian, German). Tagline: "Internship tracker" / "Suivi de stage". Each application is a specimen. Voice: direct, encouraging without hype, speaks to a student as a peer.
 - User asked for an "editorial, warm" feeling and explicitly does not want an interface that looks vibe-coded.
 
 ## Evidence on Hand

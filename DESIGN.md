@@ -1,6 +1,6 @@
 # Design
 
-<!-- Visual system for Carnet de stage. Product truth lives in PRODUCT.md. -->
+<!-- Visual system for Herbarium. Product truth lives in PRODUCT.md. -->
 
 ## World: Herbier de terrain
 

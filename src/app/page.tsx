@@ -8,7 +8,7 @@ import { SpecimenLabel } from "@/components/specimen-label";
 import { ButtonLink } from "@/components/ui";
 import { BrandMark } from "@/components/brand";
 
-const REPO_URL = "https://github.com/Musmus05/carnet-de-stage";
+const REPO_URL = "https://github.com/Musmus05/herbarium";
 
 export default async function Home() {
   const [{ locale, t }, user] = await Promise.all([getDictionary(), getUser()]);
