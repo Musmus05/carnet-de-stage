@@ -32,7 +32,7 @@ export default async function OverviewPage() {
       <>
         <PageHeader title={o.title} />
         <section className="mt-10 grid items-center gap-8 sm:grid-cols-[14rem_1fr]">
-          <SpecimenPlate seed="empty-overview" status="to_apply" width={240} height={300} paper="#e9ece2" label="" className="mx-auto w-48 sm:w-full" />
+          <SpecimenPlate seed="empty-overview" status="to_apply" label="" className="mx-auto w-48 sm:w-full" />
           <div>
             <h2 className="font-serif text-2xl font-semibold">{o.empty.title}</h2>
             <p className="mt-2 max-w-[48ch] text-ink-2">{o.empty.body}</p>

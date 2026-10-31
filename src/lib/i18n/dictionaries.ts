@@ -39,7 +39,7 @@ const fr = {
       },
     ],
     privacy: "Vos données restent privées : vous seul y avez accès.",
-    footer: "Projet ouvert, code source sur GitHub.",
+    footer: "Projet open source, code sur GitHub.",
   },
   auth: {
     title: "Ouvrir votre herbier",
@@ -287,7 +287,7 @@ const en: Dictionary = {
       },
     ],
     privacy: "Your data stays private: only you can see it.",
-    footer: "Open project, source code on GitHub.",
+    footer: "Open source project, code on GitHub.",
   },
   auth: {
     title: "Open your herbarium",

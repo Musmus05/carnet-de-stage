@@ -7,6 +7,7 @@ declare module "p5.brush/standalone" {
     options?: { pixelDensity?: number; parent?: string | Element | null; id?: string },
   ): HTMLCanvasElement;
   export function render(): void;
+  export function load(target: HTMLCanvasElement | OffscreenCanvas): void;
   export function clear(color?: string): void;
   export function seed(value: number | string): void;
   export function noiseSeed(value: number | string): void;
