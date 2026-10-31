@@ -1,0 +1,15 @@
+name: Idée
+description: Proposer une fonctionnalité
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Le problème
+      description: Quelle situation de recherche de stage est mal servie aujourd'hui ?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposition
