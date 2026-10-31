@@ -1,5 +1,5 @@
 -- Local demo data. Runs on `npx supabase db reset`, never in production.
--- Demo account: demo@carnet.test / demo-carnet-2026 (local only).
+-- Demo account: demo@herbarium.test / demo-herbarium-2026 (local only).
 -- Companies and outcomes below are fictional examples.
 
 insert into auth.users (
@@ -8,15 +8,15 @@ insert into auth.users (
   confirmation_token, recovery_token, email_change, email_change_token_new
 ) values (
   '00000000-0000-0000-0000-000000000000', '11111111-1111-4111-8111-111111111111',
-  'authenticated', 'authenticated', 'demo@carnet.test',
-  crypt('demo-carnet-2026', gen_salt('bf')), now(),
+  'authenticated', 'authenticated', 'demo@herbarium.test',
+  crypt('demo-herbarium-2026', gen_salt('bf')), now(),
   '{"provider":"email","providers":["email"]}', '{}', now(), now(), '', '', '', ''
 );
 
 insert into auth.identities (id, user_id, provider_id, identity_data, provider, created_at, updated_at, last_sign_in_at)
 values (
   gen_random_uuid(), '11111111-1111-4111-8111-111111111111', '11111111-1111-4111-8111-111111111111',
-  '{"sub":"11111111-1111-4111-8111-111111111111","email":"demo@carnet.test"}', 'email', now(), now(), now()
+  '{"sub":"11111111-1111-4111-8111-111111111111","email":"demo@herbarium.test"}', 'email', now(), now(), now()
 );
 
 insert into public.cvs (id, user_id, label, language, notes) values
