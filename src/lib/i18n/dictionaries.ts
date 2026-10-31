@@ -4,7 +4,7 @@ export const defaultLocale: Locale = "fr";
 
 const fr = {
   meta: {
-    title: "Carnet de stage",
+    title: "Herbarium",
     description:
       "Suivez vos candidatures de stage, le CV envoyé à chacune, et apprenez de chaque réponse.",
   },
@@ -14,14 +14,14 @@ const fr = {
     cvs: "CV",
     signOut: "Se déconnecter",
     signIn: "Se connecter",
-    start: "Commencer mon carnet",
+    start: "Commencer mon herbier",
     language: "English",
     menu: "Menu",
   },
   landing: {
     title: "Chaque candidature de stage, notée et classée.",
-    lede: "Notez l'entreprise, le type de stage et le CV envoyé. Quand la réponse arrive, ou n'arrive pas, le carnet vous montre ce qui marche.",
-    cta: "Commencer mon carnet",
+    lede: "Notez l'entreprise, le type de stage et le CV envoyé. Quand la réponse arrive, ou n'arrive pas, l'herbier vous montre ce qui marche.",
+    cta: "Commencer mon herbier",
     secondary: "J'ai déjà un compte",
     plateCaption: "Planche n° 1 : une candidature, du dépôt à la réponse.",
     points: [
@@ -42,7 +42,7 @@ const fr = {
     footer: "Projet ouvert, code source sur GitHub.",
   },
   auth: {
-    title: "Ouvrir votre carnet",
+    title: "Ouvrir votre herbier",
     subtitle: "Un compte suffit pour retrouver vos candidatures sur tous vos appareils.",
     email: "Adresse e-mail",
     password: "Mot de passe",
@@ -93,7 +93,7 @@ const fr = {
   overview: {
     title: "Vue d'ensemble",
     empty: {
-      title: "Votre carnet est vide",
+      title: "Votre herbier est vide",
       body: "Ajoutez votre première candidature : l'entreprise, le poste et le type de stage suffisent.",
       cta: "Ajouter une candidature",
     },
@@ -180,7 +180,7 @@ const fr = {
     feedbackHint: "Ce que l'entreprise a dit. C'est ce qui vous aide à progresser.",
     save: "Enregistrer",
     saving: "Enregistrement…",
-    create: "Ajouter au carnet",
+    create: "Ajouter à l'herbier",
     cancel: "Annuler",
     delete: "Supprimer",
     deleteConfirm: "Supprimer définitivement cette candidature ?",
@@ -210,7 +210,7 @@ const fr = {
   },
   cvs: {
     title: "CV",
-    lede: "Rangez chaque version de votre CV. Le carnet compte les réponses obtenues par chacune.",
+    lede: "Rangez chaque version de votre CV. L'herbier compte les réponses obtenues par chacune.",
     upload: "Ajouter un CV",
     label: "Nom de la version",
     labelPlaceholder: "Ex. : CV recherche, anglais",
@@ -223,7 +223,7 @@ const fr = {
     uploading: "Envoi…",
     empty: {
       title: "Aucun CV rangé",
-      body: "Ajoutez votre CV en PDF. Si vous en avez plusieurs versions, ajoutez-les toutes : le carnet comparera leurs résultats.",
+      body: "Ajoutez votre CV en PDF. Si vous en avez plusieurs versions, ajoutez-les toutes : l'herbier comparera leurs résultats.",
     },
     used: "Utilisé {n} fois",
     usedOne: "Utilisé 1 fois",
@@ -252,7 +252,7 @@ export type Dictionary = typeof fr;
 
 const en: Dictionary = {
   meta: {
-    title: "Internship Logbook",
+    title: "Herbarium",
     description:
       "Track your internship applications, the CV you sent to each, and learn from every answer.",
   },
@@ -262,14 +262,14 @@ const en: Dictionary = {
     cvs: "CVs",
     signOut: "Sign out",
     signIn: "Sign in",
-    start: "Start my logbook",
+    start: "Start my herbarium",
     language: "Français",
     menu: "Menu",
   },
   landing: {
     title: "Every internship application, logged and filed.",
-    lede: "Note the company, the kind of internship and the CV you sent. When the answer comes, or doesn't, the logbook shows you what works.",
-    cta: "Start my logbook",
+    lede: "Note the company, the kind of internship and the CV you sent. When the answer comes, or doesn't, the herbarium shows you what works.",
+    cta: "Start my herbarium",
     secondary: "I already have an account",
     plateCaption: "Plate no. 1: one application, from sending to answer.",
     points: [
@@ -290,7 +290,7 @@ const en: Dictionary = {
     footer: "Open project, source code on GitHub.",
   },
   auth: {
-    title: "Open your logbook",
+    title: "Open your herbarium",
     subtitle: "One account is enough to find your applications on every device.",
     email: "Email address",
     password: "Password",
@@ -341,7 +341,7 @@ const en: Dictionary = {
   overview: {
     title: "Overview",
     empty: {
-      title: "Your logbook is empty",
+      title: "Your herbarium is empty",
       body: "Add your first application: company, role and internship type are enough.",
       cta: "Add an application",
     },
@@ -428,7 +428,7 @@ const en: Dictionary = {
     feedbackHint: "What the company told you. This is what helps you improve.",
     save: "Save",
     saving: "Saving…",
-    create: "Add to logbook",
+    create: "Add to herbarium",
     cancel: "Cancel",
     delete: "Delete",
     deleteConfirm: "Permanently delete this application?",
@@ -458,7 +458,7 @@ const en: Dictionary = {
   },
   cvs: {
     title: "CVs",
-    lede: "File every version of your CV. The logbook counts the answers each one gets.",
+    lede: "File every version of your CV. The herbarium counts the answers each one gets.",
     upload: "Add a CV",
     label: "Version name",
     labelPlaceholder: "e.g. Research CV, English",
@@ -471,7 +471,7 @@ const en: Dictionary = {
     uploading: "Uploading…",
     empty: {
       title: "No CV filed",
-      body: "Add your CV as a PDF. If you have several versions, add them all: the logbook will compare their results.",
+      body: "Add your CV as a PDF. If you have several versions, add them all: the herbarium will compare their results.",
     },
     used: "Used {n} times",
     usedOne: "Used once",
