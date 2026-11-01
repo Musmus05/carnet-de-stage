@@ -243,6 +243,7 @@ const fr = {
   profile: {
     title: "Profil",
     lede: "Votre identité dans l'herbier, votre mot de passe et vos données.",
+    demo: "Compte de démonstration partagé : les données reviennent aux exemples toutes les heures. Photo, e-mail, mot de passe et suppression du compte sont désactivés.",
     identity: "Identité",
     photo: "Photo de profil",
     photoHint: "JPG, PNG ou WebP, 2 Mo maximum",
@@ -533,6 +534,7 @@ const en: Dictionary = {
   profile: {
     title: "Profile",
     lede: "Your identity in the herbarium, your password and your data.",
+    demo: "Shared demo account: data returns to the examples every hour. Photo, email, password and account deletion are disabled.",
     identity: "Identity",
     photo: "Profile photo",
     photoHint: "JPG, PNG or WebP, 2 MB max",
