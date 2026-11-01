@@ -85,7 +85,7 @@ Chaque candidature reçoit une plante peinte avec [p5.brush](https://github.com/
 
 ## Guide d'utilisation
 
-> Pour essayer sans rien créer, lancez l'app en local et connectez-vous avec le compte de démonstration `demo@herbarium.test` / `demo-herbarium-2026` (17 candidatures fictives). Voir [Lancer en local](#lancer-en-local).
+> Pour essayer sans rien créer, connectez-vous sur [herbarium-eta.vercel.app](https://herbarium-eta.vercel.app/login) avec le compte de démonstration `demo@herbarium.test` / `demo-herbarium-2026` (17 candidatures fictives). Ce compte est partagé : ses données reviennent aux exemples toutes les heures, et photo, e-mail, mot de passe et suppression y sont désactivés.
 
 ### 1. Créer un compte
 
@@ -201,7 +201,7 @@ cp .env.example .env.local    # collez l'API URL et la clé « Publishable » af
 npm run dev
 ```
 
-Ouvrez http://localhost:3000 et connectez-vous avec le compte de démonstration (local uniquement, défini dans [`supabase/seed.sql`](supabase/seed.sql)) :
+Ouvrez http://localhost:3000 et connectez-vous avec le compte de démonstration (le même qu'en ligne, créé par la migration [`20261101120000_demo_account.sql`](supabase/migrations/20261101120000_demo_account.sql)) :
 
 | E-mail | Mot de passe |
 |---|---|
