@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="src/app/icon.svg" width="72" alt="" />
+<img src="public/icon.svg" width="72" alt="" />
 
 # Herbarium
 

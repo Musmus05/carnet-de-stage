@@ -30,6 +30,8 @@ export const LANDING_FOREST: Sequence = { name: "forest-landing", width: 1600, h
 // Watercolour on a transparent ground turns pale over dark green, so the
 // login forest is painted on the rail colour; its top edge is faded out.
 export const LOGIN_FOREST: Sequence = { name: "forest-login", width: 900, height: 820, frames: 16, paper: "#1e3a2b" };
+// The navigation rail fern, on the rail green.
+export const RAIL_FOREST: Sequence = { name: "forest-rail", width: 280, height: 560, frames: 12, paper: "#1e3a2b" };
 
 export function framePath(seq: Sequence, index: number) {
   return `/frames/${seq.name}/${String(index).padStart(2, "0")}.webp`;
