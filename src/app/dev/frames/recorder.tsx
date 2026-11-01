@@ -4,13 +4,14 @@ import { useState } from "react";
 import {
   LANDING_FOREST,
   LOGIN_FOREST,
+  RAIL_FOREST,
   SPECIMEN_STAGES,
   SPECIMEN_VARIANTS,
   specimenSequence,
   type Sequence,
 } from "@/components/brush/catalog";
 import { recordFrames } from "@/components/brush/record";
-import { forestScene, specimenScene } from "@/components/brush/scenes";
+import { forestScene, railScene, specimenScene } from "@/components/brush/scenes";
 import type { Step } from "@/components/brush/botany";
 
 type Job = { seq: Sequence; seed: string; steps: Step[]; density: number };
@@ -28,6 +29,7 @@ function jobs(): Job[] {
   list.push({ seq: landing, seed: "landing-forest", density: 1, steps: forestScene("landing-forest", landing.width, landing.height, "sheet", { from: 0, to: 0.52 }) });
   const login = LOGIN_FOREST;
   list.push({ seq: login, seed: "login-forest", density: 1, steps: forestScene("login-forest", login.width, login.height, "fern") });
+  list.push({ seq: RAIL_FOREST, seed: "rail", density: 2, steps: railScene("rail", RAIL_FOREST.width, RAIL_FOREST.height) });
   return list;
 }
 

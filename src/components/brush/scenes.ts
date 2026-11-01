@@ -102,3 +102,24 @@ export function forestScene(
 
   return steps;
 }
+
+/**
+ * The navigation rail: one tall fern frond rising behind the menu, with a
+ * smaller frond, an umbel, a wildflower and grass at its foot. Faint, so
+ * the menu stays readable over it.
+ */
+export function railScene(seed: string, width: number, height: number): Step[] {
+  const rand = prng(hash(seed));
+  const c = TONES.fern;
+  const ground = height + 2;
+  const fade = 0.55;
+  const steps: Step[] = [];
+  steps.push(...within(fern({ seed: `${seed}-tall`, base: [width * 0.62, ground], height: height * 0.92, ink: { stem: c.trunk, leaf: c.fern }, fade }), 0, 0.75));
+  steps.push(...within(fern({ seed: `${seed}-small`, base: [width * 0.24, ground], height: height * 0.48, ink: { stem: c.trunk, leaf: c.fern }, fade }), 0.15, 0.6));
+  steps.push(...within(umbel({ seed: `${seed}-umbel`, base: [width * 0.86, ground], height: height * 0.36, ink: { stem: c.grass, head: c.umbel }, fade: 0.7 }), 0.3, 0.55));
+  steps.push(...within(flower({ seed: `${seed}-flower`, stage: "flower", base: [width * 0.42, ground], height: height * 0.3, underpaint: c.underpaint, ink: { head: WILD[0], leaf: c.leaf, stem: c.stem }, fade: 0.9 }), 0.4, 0.55));
+  for (let i = 0; i < 6; i++) {
+    steps.push(...within(grass({ seed: `${seed}-g${i}`, base: [((i + rand.range(0.2, 0.8)) / 6) * width, ground], height: height * rand.range(0.05, 0.1), ink: { stem: c.grass } }), 0.5 + rand.range(0, 0.2), 0.3));
+  }
+  return steps;
+}

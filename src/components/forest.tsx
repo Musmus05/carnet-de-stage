@@ -1,16 +1,17 @@
 "use client";
 
-import { LANDING_FOREST, LOGIN_FOREST } from "./brush/catalog";
-import { forestScene } from "./brush/scenes";
+import { LANDING_FOREST, LOGIN_FOREST, RAIL_FOREST } from "./brush/catalog";
+import { forestScene, railScene } from "./brush/scenes";
 import { FramePlayer } from "./frame-player";
 import { LivePainting, useLivePainting } from "./live-painting";
 
 const FADE = "linear-gradient(to bottom, transparent 0%, #000 22%)";
 
 const SCENES = {
-  landing: { sequence: LANDING_FOREST, seed: "landing-forest", tone: "sheet", quiet: { from: 0, to: 0.52 } },
-  login: { sequence: LOGIN_FOREST, seed: "login-forest", tone: "fern", quiet: undefined },
-} as const;
+  landing: { sequence: LANDING_FOREST, build: (w: number, h: number) => forestScene("landing-forest", w, h, "sheet", { from: 0, to: 0.52 }) },
+  login: { sequence: LOGIN_FOREST, build: (w: number, h: number) => forestScene("login-forest", w, h, "fern") },
+  rail: { sequence: RAIL_FOREST, build: (w: number, h: number) => railScene("rail", w, h) },
+};
 
 /**
  * A forest rising from the bottom edge. Painted live with p5.brush where the
@@ -39,9 +40,9 @@ export function Forest({
     >
       {live === null ? null : live ? (
         <LivePainting
-          seed={s.seed}
+          seed={s.sequence.name}
           paper={s.sequence.paper}
-          build={(w, h) => forestScene(s.seed, w, h, s.tone, s.quiet)}
+          build={s.build}
           duration={duration}
           fallback={frames}
         />
