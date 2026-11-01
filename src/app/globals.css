@@ -137,3 +137,37 @@ textarea {
     animation-duration: 0.01ms !important;
   }
 }
+
+/*
+ * Navigation rail (app shell).
+ * The "new application" button is an accession ticket with punched edges;
+ * the active link is a folder index tab whose corners curve into the page.
+ */
+.rail-ticket {
+  border-radius: 3px;
+  --punch: radial-gradient(circle 6px at 0 50%, #0000 97%, #000) left / 51% 100% no-repeat,
+    radial-gradient(circle 6px at 100% 50%, #0000 97%, #000) right / 51% 100% no-repeat;
+  -webkit-mask: var(--punch);
+  mask: var(--punch);
+  box-shadow: 0 1px 0 rgb(0 0 0 / 0.18);
+}
+
+@media (min-width: 64rem) {
+  .rail-tab.is-active::before,
+  .rail-tab.is-active::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    width: 14px;
+    height: 14px;
+    pointer-events: none;
+  }
+  .rail-tab.is-active::before {
+    top: -14px;
+    background: radial-gradient(circle at 0 0, #0000 13.5px, var(--sheet) 14px);
+  }
+  .rail-tab.is-active::after {
+    bottom: -14px;
+    background: radial-gradient(circle at 0 100%, #0000 13.5px, var(--sheet) 14px);
+  }
+}

@@ -48,3 +48,25 @@ export async function getProfile() {
   }
   return { user: auth.user, profile: data, avatarUrl };
 }
+
+/** Counts shown in the navigation rail. */
+export async function getRailStats() {
+  const supabase = await createClient();
+  const today = new Date().toISOString().slice(0, 10);
+  const [apps, cvs, overdue, last] = await Promise.all([
+    supabase.from("applications").select("id", { count: "exact", head: true }),
+    supabase.from("cvs").select("id", { count: "exact", head: true }),
+    supabase
+      .from("applications")
+      .select("id", { count: "exact", head: true })
+      .in("status", ["applied", "followed_up"])
+      .lte("follow_up_on", today),
+    supabase.from("applications").select("number").order("number", { ascending: false }).limit(1).maybeSingle(),
+  ]);
+  return {
+    applications: apps.count ?? 0,
+    cvs: cvs.count ?? 0,
+    followUpsDue: overdue.count ?? 0,
+    nextNumber: (last.data?.number ?? 0) + 1,
+  };
+}
