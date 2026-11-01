@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { redirect } from "next/navigation";
+import { ViewTransition } from "react";
 import { getDictionary } from "@/lib/i18n/server";
 import { format } from "@/lib/i18n/dictionaries";
 import { getProfile, getRailStats } from "@/lib/data";
@@ -64,7 +65,10 @@ export default async function AppLayout({ children }: LayoutProps<"/app">) {
         </div>
       </aside>
       <main className="min-w-0 px-4 pb-24 pt-6 sm:px-8 lg:px-12 lg:pt-10">
-        <div className="mx-auto max-w-6xl">{children}</div>
+        {/* Cross-fades the page on navigation; see globals.css. */}
+        <ViewTransition default="page-swap">
+          <div className="mx-auto max-w-6xl">{children}</div>
+        </ViewTransition>
         <div className="mx-auto mt-16 flex max-w-6xl items-center gap-5 border-t border-rule pt-5 text-sm text-ink-2 lg:hidden">
           <Link href="/app/profile" className="flex items-center gap-2 hover:text-ink">
             <Avatar url={avatarUrl} name={name} size={26} /> {t.nav.profile}

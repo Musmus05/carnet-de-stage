@@ -82,6 +82,8 @@ export function AppNav({
             <li key={href} data-href={href}>
               <Link
                 href={href}
+                // Prefetch the full page so switching sections needs no round trip.
+                prefetch
                 aria-current={active ? "page" : undefined}
                 onClick={() => setClicked({ href, from: pathname })}
                 className={`relative z-10 inline-flex h-9 items-center gap-3 rounded-md px-2.5 text-sm transition-colors duration-200 lg:flex lg:h-11 lg:rounded-l-lg lg:rounded-r-none lg:pl-3.5 lg:pr-6 lg:text-[0.9375rem] ${

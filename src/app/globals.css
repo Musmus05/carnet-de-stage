@@ -177,14 +177,45 @@ textarea {
   transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1), height 320ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Each page fades in on navigation; the rail around it stays still. */
-@keyframes page-in {
+/*
+ * Page changes: the content cross-fades with the View Transitions API while
+ * the rail stays live (the root is not captured, so the sliding index tab
+ * keeps animating). Browsers without support simply swap the page.
+ */
+:root {
+  view-transition-name: none;
+}
+
+::view-transition {
+  pointer-events: none;
+}
+
+::view-transition-old(.page-swap) {
+  animation: 120ms ease-out both vt-out;
+}
+
+::view-transition-new(.page-swap) {
+  animation: 280ms cubic-bezier(0.22, 1, 0.36, 1) 60ms both vt-in;
+}
+
+@keyframes vt-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes vt-in {
   from {
     opacity: 0;
     transform: translateY(6px);
   }
 }
 
-.page-in {
-  animation: page-in 260ms cubic-bezier(0.22, 1, 0.36, 1) both;
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(*),
+  ::view-transition-new(*),
+  ::view-transition-group(*) {
+    animation-duration: 0s !important;
+    animation-delay: 0s !important;
+  }
 }

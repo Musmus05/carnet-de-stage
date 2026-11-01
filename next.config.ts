@@ -15,6 +15,10 @@ const nextConfig: NextConfig = {
   // would wrap almost everything in Suspense for no gain. Kept off on purpose.
   cacheComponents: false,
   poweredByHeader: false,
+  experimental: {
+    // Keep visited and prefetched pages for 30 s, so going back to a section is instant.
+    staleTimes: { dynamic: 30 },
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },
